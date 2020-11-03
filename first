@@ -1,0 +1,12 @@
+const fs = require('fs');
+if(fs.existsSync('./js/dj.js')){
+
+    fs.readFile('./js/dj.js', (error,data) => {
+
+        if (error) {
+            console.log(error);
+        }
+        console.log(data.toString());
+    
+    });
+}
