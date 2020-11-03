@@ -1,0 +1,52 @@
+const http = require('http');
+
+const fs = require('fs');
+const { url } = require('inspector');
+const server = http.createServer((req, res) => {
+
+    console.log('ok')
+    res.setHeader('content-type', 'text/html');
+
+    let path = ("./views/");
+
+    switch (res = url) {
+
+        case './':
+            path += 'home.html';
+            break
+        case './about':
+            path += 'abot.html';
+            break
+        // case './':
+        //     path+='home.html';
+        //     break
+
+    }
+
+    fs.readFile(path, (err, data) => {
+
+        if (err) {
+
+            console.log(err)
+
+        }
+
+        else {
+
+            res.write(data);
+            res.end()
+
+
+        }
+
+    })
+
+});
+server.listen(3000, 'localhost', () => {
+
+    console.log('server started')
+
+
+});
+
+
